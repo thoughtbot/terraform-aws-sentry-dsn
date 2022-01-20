@@ -59,6 +59,7 @@ module "sentry_dsn" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_admin_principals"></a> [admin\_principals](#input\_admin\_principals) | Principals allowed to peform admin actions (default: current account) | `list(string)` | `null` | no |
 | <a name="input_auth_token_kms_key_id"></a> [auth\_token\_kms\_key\_id](#input\_auth\_token\_kms\_key\_id) | ID of the KMS key used to encrypt the auth token | `string` | `"alias/sentry-auth-token"` | no |
 | <a name="input_auth_token_secret_arn"></a> [auth\_token\_secret\_arn](#input\_auth\_token\_secret\_arn) | ARN of a SecretsManager secret containing a Sentry auth token | `string` | `null` | no |
 | <a name="input_auth_token_secret_key"></a> [auth\_token\_secret\_key](#input\_auth\_token\_secret\_key) | Key within secret at which the auth token ca be accessed | `string` | `"SENTRY_AUTH_TOKEN"` | no |
@@ -66,9 +67,9 @@ module "sentry_dsn" {
 | <a name="input_name"></a> [name](#input\_name) | Name for the Sentry client key | `string` | n/a | yes |
 | <a name="input_organization_slug"></a> [organization\_slug](#input\_organization\_slug) | Slug for the Sentry organization in which the project exists | `string` | n/a | yes |
 | <a name="input_project_slug"></a> [project\_slug](#input\_project\_slug) | Slug for the Sentry project for which a key should be created | `string` | n/a | yes |
+| <a name="input_read_principals"></a> [read\_principals](#input\_read\_principals) | Principals allowed to read the secret (default: current account) | `list(string)` | `null` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | Subnets in which the rotation function should run | `list(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags which should be applied to created resources | `map(string)` | `{}` | no |
-| <a name="input_trust_principal"></a> [trust\_principal](#input\_trust\_principal) | Principal allowed to access the secret (default: current account) | `string` | `null` | no |
 | <a name="input_trust_tags"></a> [trust\_tags](#input\_trust\_tags) | Tags required on principals accessing the secret | `map(string)` | `{}` | no |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | VPC in which the rotation function should run | `string` | n/a | yes |
 

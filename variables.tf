@@ -1,3 +1,9 @@
+variable "admin_principals" {
+  description = "Principals allowed to peform admin actions (default: current account)"
+  type        = list(string)
+  default     = null
+}
+
 variable "auth_token_secret_arn" {
   type        = string
   description = "ARN of a SecretsManager secret containing a Sentry auth token"
@@ -37,16 +43,16 @@ variable "project_slug" {
   description = "Slug for the Sentry project for which a key should be created"
 }
 
+variable "read_principals" {
+  description = "Principals allowed to read the secret (default: current account)"
+  type        = list(string)
+  default     = null
+}
+
 variable "tags" {
   description = "Tags which should be applied to created resources"
   default     = {}
   type        = map(string)
-}
-
-variable "trust_principal" {
-  description = "Principal allowed to access the secret (default: current account)"
-  type        = string
-  default     = null
 }
 
 variable "trust_tags" {
