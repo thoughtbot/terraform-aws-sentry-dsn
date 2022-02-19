@@ -1,6 +1,7 @@
-# Sentry DSN
+# Sentry DSN for AWS
 
-Provides a Sentry DSN for submitting errors and events to a Sentry project.
+Creates an AWS Secrets Manager secret containing a Sentry DSN for submitting
+errors and events to a Sentry project.
 
 A secret containing a Sentry auth token must be provided. Once active, the
 secret will automatically rotate credentials every 30 days. In order to avoid
@@ -12,13 +13,17 @@ Example:
 
 ```
 module "sentry_dsn" {
-  source = "git@github.com:thoughtbot/flightdeck-addons.git//aws/sentry-dsn?ref=main"
+  source = "github.com/thoughtbot/terraform-aws-sentry-dsn?ref=v0.1.0"
 
   name              = "example-staging"
   organization_slug = "organization"
   project_slug      = "example"
   subnet_ids        = module.network_data.private_subnet_ids
   vpc_id            = module.network_data.vpc.id
+
+  # You can provide the ARN of a secret containing an auth token. If not
+  # provided, it will look for a secret named ORGNIZATION-PROJECT-NAME-sentry
+  auth_token_secret_name = "my-secret"
 }
 ```
 
@@ -40,8 +45,8 @@ module "sentry_dsn" {
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_rotation"></a> [rotation](#module\_rotation) | ../secret-rotation-function |  |
-| <a name="module_secret"></a> [secret](#module\_secret) | ../generic-secret |  |
+| <a name="module_rotation"></a> [rotation](#module\_rotation) | github.com/thoughtbot/terraform-aws-secrets//secret-rotation-function?ref=v0.1.0 |  |
+| <a name="module_secret"></a> [secret](#module\_secret) | github.com/thoughtbot/terraform-aws-secrets//secret?ref=v0.1.0 |  |
 
 ## Resources
 
