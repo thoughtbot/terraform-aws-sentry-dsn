@@ -13,7 +13,7 @@ Example:
 
 ```
 module "sentry_dsn" {
-  source = "github.com/thoughtbot/terraform-aws-sentry-dsn?ref=v0.1.0"
+  source = "github.com/thoughtbot/terraform-aws-sentry-dsn?ref=v0.3.0"
 
   name              = "example-staging"
   organization_slug = "organization"
