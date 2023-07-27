@@ -27,6 +27,21 @@ module "sentry_dsn" {
 }
 ```
 
+## Creating an auth token
+
+The recommended approach to generating an auth token is to create an [internal
+integration] for Sentry. In order to manage auth tokens, you will need the
+following scopes:
+
+* `project:read`
+* `project:write`
+* `project:admin`
+
+After creating the integration, copy the auth token and save it in a Secrets
+Manager secret.
+
+[internal integration]: https://docs.sentry.io/product/integrations/integration-platform/internal-integration/
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
