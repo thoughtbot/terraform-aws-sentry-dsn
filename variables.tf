@@ -3,6 +3,15 @@ variable "admin_principals" {
   type        = list(string)
   default     = null
 }
+variable "replica_regions" {
+  description = "List of regions to replicate the secret to"
+  type = list(object({
+    region     = string
+    kms_key_id = optional(string)
+  }))
+  default = []
+}
+
 
 variable "auth_token_secret_arn" {
   type        = string
