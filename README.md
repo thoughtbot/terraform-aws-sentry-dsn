@@ -33,9 +33,9 @@ The recommended approach to generating an auth token is to create an [internal
 integration] for Sentry. In order to manage auth tokens, you will need the
 following scopes:
 
-* `project:read`
-* `project:write`
-* `project:admin`
+- `project:read`
+- `project:write`
+- `project:admin`
 
 After creating the integration, copy the auth token and save it in a Secrets
 Manager secret.
